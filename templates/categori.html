@@ -17,15 +17,13 @@
                     </div>
                     <div class="col-lg-9 col-md-9">
                         <div class="properties__button">
-                            <!--Nav Button  -->                                            
-                            <nav>                                                                     
+                            <!--Nav Button  -->
+                           <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All</a>
-                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Lifestyle</a>
-                                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Travel</a>
-                                    <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Fashion</a>
-                                    <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Sports</a>
-                                    <a class="nav-item nav-link" id="nav-technology" data-toggle="tab" href="#nav-techno" role="tab" aria-controls="nav-contact" aria-selected="false">Technology</a>
+                                    {% for cat in category %}
+                                    <a class="nav-item nav-link" id="nav-{{ cat.name }}-tab" data-toggle="tab" href="#nav-{{ cat.name }}" role="tab" aria-controls="nav-{{ cat.name }}" aria-selected="false">{{ cat.name }}</a>
+                                    {% endfor %}
                                 </div>
                             </nav>
                             <!--End Nav Button  -->
@@ -36,314 +34,264 @@
                     <div class="col-12">
                         <!-- Nav Card -->
                         <div class="tab-content" id="nav-tabContent">
-                            <!-- card one -->
-                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">           
+                            <div class="tab-pane fade show active" id="nav-home-1" role="tabpanel" aria-labelledby="nav-home-tab">
                                 <div class="whats-news-caption">
                                     <div class="row">
+                                        {% for new in news %}
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews1.jpg' %}" alt="">
+                                                    <img src="{{ new.image.url }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+                                                    <span class="color1">{{ new.category.name }}</span>
+                                                    <h4><a href="#">{{ new.title | truncatewords:5 }}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews2.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews3.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews4.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
+                            {% for cat in category %}
+                            <div class="tab-pane fade" id="nav-{{ cat.name }}" role="tabpanel" aria-labelledby="nav-{{ cat.name }}-tab">
+                                <div class="whats-news-caption">
+                                    <div class="row">
+                                        {% for new in news %}
+                                        {% if new.category_id == cat.id %}
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="single-what-news mb-100">
+                                                <div class="what-img">
+                                                    <img src="{{ new.image.url }}" alt="">
+                                                </div>
+                                                <div class="what-cap">
+                                                    <span class="color1">{{ new.category.name }}</span>
+                                                    <h4><a href="#">{{ new.title | truncatewords:5 }}</a></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
                             <!-- Card two -->
-                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="tab-pane fade show active" id="nav-home-2 " role="tabpanel" aria-labelledby="nav-home-tab">
                                 <div class="whats-news-caption">
                                     <div class="row">
+                                        {% for new in news1 %}
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews1.jpg' %}" alt="">
+                                                    <img src="{{ new.image.url }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+                                                    <span class="color1">{{ new.category.name }}</span>
+                                                    <h4><a href="#">{{ new.title | truncatewords:5 }}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews2.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews3.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews4.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
+                            {% for cat in category %}
+                            <div class="tab-pane fade" id="nav-{{ cat.name }}" role="tabpanel" aria-labelledby="nav-{{ cat.name }}-tab">
+                                <div class="whats-news-caption">
+                                    <div class="row">
+                                        {% for new in news1 %}
+                                        {% if new.category_id == cat.id %}
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="single-what-news mb-100">
+                                                <div class="what-img">
+                                                    <img src="{{ new.image.url }}" alt="">
+                                                </div>
+                                                <div class="what-cap">
+                                                    <span class="color1">{{ new.category.name }}</span>
+                                                    <h4><a href="#">{{ new.title | truncatewords:5 }}</a></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
                             <!-- Card three -->
-                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div class="tab-pane fade show active" id="nav-home-3" role="tabpanel" aria-labelledby="nav-home-tab">
                                 <div class="whats-news-caption">
                                     <div class="row">
+                                        {% for new in news2 %}
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews1.jpg' %}" alt="">
+                                                    <img src="{{ new.image.url }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+                                                    <span class="color1">{{ new.category.name }}</span>
+                                                    <h4><a href="#">{{ new.title | truncatewords:5 }}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews2.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews3.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews4.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
+                            {% for cat in category %}
+                            <div class="tab-pane fade" id="nav-{{ cat.name }}" role="tabpanel" aria-labelledby="nav-{{ cat.name }}-tab">
+                                <div class="whats-news-caption">
+                                    <div class="row">
+                                        {% for new in news2 %}
+                                        {% if new.category_id == cat.id %}
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="single-what-news mb-100">
+                                                <div class="what-img">
+                                                    <img src="{{ new.image.url }}" alt="">
+                                                </div>
+                                                <div class="what-cap">
+                                                    <span class="color1">{{ new.category.name }}</span>
+                                                    <h4><a href="#">{{ new.title | truncatewords:5 }}</a></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
                             <!-- card fure -->
-                            <div class="tab-pane fade" id="nav-last" role="tabpanel" aria-labelledby="nav-last-tab">
+                            <div class="tab-pane fade show active" id="nav-home-4" role="tabpanel" aria-labelledby="nav-home-tab">
                                 <div class="whats-news-caption">
                                     <div class="row">
+                                        {% for new in news3 %}
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews1.jpg' %}" alt="">
+                                                    <img src="{{ new.image.url }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+                                                    <span class="color1">{{ new.category.name }}</span>
+                                                    <h4><a href="#">{{ new.title | truncatewords:5 }}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews2.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews3.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews4.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
+                            {% for cat in category %}
+                            <div class="tab-pane fade" id="nav-{{ cat.name }}" role="tabpanel" aria-labelledby="nav-{{ cat.name }}-tab">
+                                <div class="whats-news-caption">
+                                    <div class="row">
+                                        {% for new in news3 %}
+                                        {% if new.category_id == cat.id %}
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="single-what-news mb-100">
+                                                <div class="what-img">
+                                                    <img src="{{ new.image.url }}" alt="">
+                                                </div>
+                                                <div class="what-cap">
+                                                    <span class="color1">{{ new.category.name }}</span>
+                                                    <h4><a href="#">{{ new.title | truncatewords:5 }}</a></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
                             <!-- card Five -->
-                            <div class="tab-pane fade" id="nav-nav-Sport" role="tabpanel" aria-labelledby="nav-Sports">
+                            <div class="tab-pane fade show active" id="nav-home-5" role="tabpanel" aria-labelledby="nav-home-tab">
                                 <div class="whats-news-caption">
                                     <div class="row">
+                                        {% for new in news4 %}
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews1.jpg' %}" alt="">
+                                                    <img src="{{ new.image.url }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+                                                    <span class="color1">{{ new.category.name }}</span>
+                                                    <h4><a href="#">{{ new.title | truncatewords:5 }}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews2.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews3.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews4.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
+                            {% for cat in category %}
+                            <div class="tab-pane fade" id="nav-{{ cat.name }}" role="tabpanel" aria-labelledby="nav-{{ cat.name }}-tab">
+                                <div class="whats-news-caption">
+                                    <div class="row">
+                                        {% for new in news4 %}
+                                        {% if new.category_id == cat.id %}
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="single-what-news mb-100">
+                                                <div class="what-img">
+                                                    <img src="{{ new.image.url }}" alt="">
+                                                </div>
+                                                <div class="what-cap">
+                                                    <span class="color1">{{ new.category.name }}</span>
+                                                    <h4><a href="#">{{ new.title | truncatewords:5 }}</a></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
                             <!-- card Six -->
-                            <div class="tab-pane fade" id="nav-techno" role="tabpanel" aria-labelledby="nav-technology">
+                            <div class="tab-pane fade show active" id="nav-home-6" role="tabpanel" aria-labelledby="nav-home-tab">
                                 <div class="whats-news-caption">
                                     <div class="row">
+                                        {% for new in news5 %}
                                         <div class="col-lg-6 col-md-6">
                                             <div class="single-what-news mb-100">
                                                 <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews1.jpg' %}" alt="">
+                                                    <img src="{{ new.image.url }}" alt="">
                                                 </div>
                                                 <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+                                                    <span class="color1">{{ new.category.name }}</span>
+                                                    <h4><a href="#">{{ new.title | truncatewords:5 }}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews2.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews3.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="{% static 'image/news/whatNews4.jpg' %}" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
+                            {% for cat in category %}
+                            <div class="tab-pane fade" id="nav-{{ cat.name }}" role="tabpanel" aria-labelledby="nav-{{ cat.name }}-tab">
+                                <div class="whats-news-caption">
+                                    <div class="row">
+                                        {% for new in news5 %}
+                                        {% if new.category_id == cat.id %}
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="single-what-news mb-100">
+                                                <div class="what-img">
+                                                    <img src="{{ new.image.url }}" alt="">
+                                                </div>
+                                                <div class="what-cap">
+                                                    <span class="color1">{{ new.category.name }}</span>
+                                                    <h4><a href="#">{{ new.title | truncatewords:5 }}</a></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
                         </div>
-                    <!-- End Nav Card -->
                     </div>
                 </div>
             </div>

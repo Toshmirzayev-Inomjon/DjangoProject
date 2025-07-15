@@ -2,52 +2,51 @@
 {% load static %}
 {% block content %}
 
-<section class="contact-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="contact-title">Get in Touch</h2>
-            </div>
 
-            <div class="col-lg-8">
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-success">{{ message }}</div>
-                    {% endfor %}
-                {% endif %}
+    <!-- ================ contact section start ================= -->
+    <section class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="contact-title">Get in Touch</h2>
+                    </div>
+                    <div class="col-lg-8">
+                        <form class="contact_form" method="post">
+                          {% csrf_token %}
+                          <input class="form-control" type="text" placeholder="Ismmingiz" name="name">
+                          <input class="form-control" type="email" placeholder="Emailingiz" name="email">
+                          <input class="form-control" type="text" placeholder="malumot" name="subject">
+                          <input class="form-control" type="text" placeholder="Habaringiz" name="message">
+                          <input type="submit" value="junatish">
 
-                <form method="post" action="">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input class="btn btn-primary mt-3" type="submit" value="Send">
-                </form>
-            </div>
-
-            <div class="col-lg-3 offset-lg-1">
-                <div class="media contact-info">
-                    <span class="contact-info__icon"><i class="ti-home"></i></span>
-                    <div class="media-body">
-                        <h3>Shahrisabz, Uzbekistan.</h3>
-                        <p>Rosemead, CA 91770</p>
+                      </form>
+                    </div>
+                    <div class="col-lg-3 offset-lg-1">
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-home"></i></span>
+                            <div class="media-body">
+                                <h3>Shahrisabz, Uzbekistan.</h3>
+                                <p>Rosemead, CA 91770</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                            <div class="media-body">
+                                <h3>+998 952300751</h3>
+                                <p>Mon to Fri 9am to 6pm</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-email"></i></span>
+                            <div class="media-body">
+                                <h3>toshmirzayevinomjon@gmail.com</h3>
+                                <p>Send us your query anytime!</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="media contact-info">
-                    <span class="contact-info__icon"><i class="ti-tablet"></i></span>
-                    <div class="media-body">
-                        <h3>+998 95 184 07 51</h3>
-                        <p>Mon to Fri 9am to 6pm</p>
-                    </div>
-                </div>
-                <div class="media contact-info">
-                    <span class="contact-info__icon"><i class="ti-email"></i></span>
-                    <div class="media-body">
-                        <h3>toshmirzayevinomjon@gmail.com</h3>
-                        <p>Send us your query anytime!</p>
-                    </div>
-                </div>
             </div>
-        </div>
-    </div>
-</section>
+    </section>
+    <!-- ================ contact section end ================= -->
 
 {% endblock content %}

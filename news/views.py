@@ -22,6 +22,28 @@ def home_view(request):
     }
     return render(request,'index.html', context= context)
 
+def category_page(request):
+    news = News.published.order_by('-publish_time')[1:5]
+    news1 = News.published.order_by('-publish_time')[5:10]
+    news2 = News.published.order_by('-publish_time')[10:15]
+    news3 = News.published.order_by('-publish_time')[15:20]
+    news4 = News.published.order_by('-publish_time')[25:30]
+    news5 = News.published.order_by('-publish_time')[35:40]
+    category = Category.objects.all()
+    context = {
+        'news': news,
+        'news1': news1,
+        'news2': news2,
+        'news3': news3,
+        'news4': news4,
+        'news5': news5,
+        "category": category,
+    }
+    return render(request, 'categori.html', context=context)
+
+
+
+
 def news_detail(request, id):
     news = get_object_or_404(News, id=id, status=News.Status.Published)
     context = {
@@ -43,7 +65,7 @@ class ContactPageView(TemplateView):
         form = ContactForm(request.POST )
         if request.method == 'POST' and form.is_valid():
             form.save()
-            return HttpResponse('surovingiz yuborilda admin javobini kuting')
+            return HttpResponse('HABAR INOMJONGA YUBORILDI')
         context = {
             'form':form
         }
