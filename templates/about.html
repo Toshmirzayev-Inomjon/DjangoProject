@@ -15,9 +15,9 @@
                                 <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                                 <div class="trending-animated">
                                     <ul id="js-news" class="js-hidden">
-                                        <li class="news-item">Bangladesh dolor sit amet, consectetur adipisicing elit.</li>
-                                        <li class="news-item">Spondon IT sit amet, consectetur.......</li>
-                                        <li class="news-item">Rem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                                        {% for new in news %}
+                                        <li class="news-item">{{ new.title }}</li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                                 
@@ -29,23 +29,43 @@
                             <!-- Trending Tittle -->
                                     <div class="about-right mb-90">
                                         <div class="about-img">
-                                            <img src="{% static '/image/post/about_heor.jpg' %}" alt="">
+                                            <img src="{% static '/image/post/AZ-860x478.jpg' %}" alt="">
                                         </div>
                                         <div class="section-tittle mb-30 pt-30">
-                                            <h3>About Us</h3>
+                                            <h3>Biz haqimizda.</h3>
                                         </div>
                                         <div class="about-prea">
-                                            <p class="about-pera1 mb-25">Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
-                                            <p class="about-pera1 mb-25">Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
-                                            <p class="about-pera1 mb-25">
-                                                My hero when I was a kid was my mom. Same for everyone I knew. Moms are untouchable. They’re elegant, smart, beautiful, kind…everything we want to be. At 29 years old, my favorite compliment is being told that I look like my mom. Seeing myself in her image, like this daughter up top, makes me so proud of how far I’ve come, and so thankful for where I come from.
-                                                the refractor telescope uses a convex lens to focus the light on the eyepiece.
-                                                The reflector telescope has a concave lens which means it bends in. It uses mirrors to focus the image that you eventually see.
-                                                Collimation is a term for how well tuned the telescope is to give you a good clear image of what you are looking at. You want your telescope to have good collimation so you are not getting a false image of the celestial body.
-                                                Aperture is a fancy word for how big the lens of your telescope is. But it’s an important word because the aperture of the lens is the key to how powerful your telescope is. Magnification has nothing to do with it, its all in the aperture.
-                                                Focuser is the housing that keeps the eyepiece of the telescope, or what you will look through, in place. The focuser has to be stable and in good repair for you to have an image you can rely on.
-                                                Mount and Wedge. Both of these terms refer to the tripod your telescope sits on. The mount is the actual tripod and the wedge is the device that lets you attach the telescope to the mount.
-                                                Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
+                                            <p>
+                                                Bizning yangiliklar sayti — bu zamonaviy, tezkor va ishonchli axborot manbai. Maqsadimiz – foydalanuvchilarga mahalliy va xalqaro yangiliklarni haqqoniy, xolis va tez yetkazish. Internet va raqamli dunyo hayotimizga tobora ko‘proq kirib kelayotgan bir davrda, axborotlar oqimida yo‘l topa olish, ishonchli va sifatli ma’lumotlarga ega bo‘lish – har bir inson uchun muhim bo‘lib bormoqda.
+                                            </p>
+
+                                            <h3>Biz nimalarni yoritamiz?</h3>
+                                            <p>
+                                                Saytimizda siz quyidagi yo‘nalishlarda yangiliklarni topishingiz mumkin:
+                                            </p>
+                                            <ul>
+                                                <li>📌 Siyosat – ichki va tashqi siyosiy voqealar</li>
+                                                <li>💼 Iqtisodiyot – moliya, valyuta, biznes va bozor tahlillari</li>
+                                                <li>🎓 Ta'lim – maktab, OTMlar va IT sohasidagi yangiliklar</li>
+                                                <li>⚽ Sport – mahalliy va jahon sport olami xabarlari</li>
+                                                <li>🌐 Texnologiyalar – sun'iy intellekt, startaplar, internet trendlar</li>
+                                                <li>🎭 Madaniyat va shou-biznes – kino, san’at, musiqiy yangiliklar</li>
+                                            </ul>
+
+                                            <h3>Nima uchun bizni tanlashadi?</h3>
+                                            <p>
+                                                Biz axborotlarni faqat tasdiqlangan manbalardan olamiz, har bir yangilik jurnalistlarimiz tomonidan tekshiruvdan o‘tkaziladi. Har bir xabar foydalanuvchiga qulay, tushunarli va zamonaviy dizayn orqali taqdim etiladi.
+                                            </p>
+
+                                            <h3>Jamoamiz</h3>
+                                            <p>
+                                                Saytimizda malakali jurnalistlar, muharrirlar, dizaynerlar va dasturchilar jamoasi faoliyat yuritadi. Ular kun-u tun eng dolzarb voqealarni sizga tez va aniq yetkazish uchun ishlaydi.
+                                            </p>
+
+                                            <h3>Biz bilan bog‘laning</h3>
+                                            <p>
+                                                Fikringiz, taklif yoki shikoyatlaringiz bo‘lsa, albatta bizga murojaat qiling. Sizning ishonchingiz – bizning asosiy kuchimizdir!
+                                            </p>
                                         </div>
                                     </div>
                         </div>

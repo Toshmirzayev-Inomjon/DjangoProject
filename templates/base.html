@@ -96,17 +96,10 @@
                                         <ul id="navigation">
                                             <li><a href="{% url 'home_page' %}">Home</a></li>
                                             <li><a href="{% url 'category_page' %}">Category</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="latest_news.html">Latest News</a></li>
+                                            <li><a href="{% url 'about' %}">About</a></li>
+                                            <li><a href="{% url 'latest_news' %}">Latest News</a></li>
                                             <li><a href="{% url 'contact_page' %}">Contact</a></li>
-                                            <li><a href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="elements.html">Element</a></li>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="details.html">Categori Details</a></li>
-                                                </ul>
-                                            </li>
+                                            <li><a href="{% url 'blog' %}">Blog</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -223,7 +216,7 @@
                                 <ul>
                                     <li><a href="#">Terms of use</a></li>
                                     <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="{% url 'contact_page' %}">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
