@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Create news{% endblock title %}
+{% block content %}
+
+<h2 class="text-center">Yangilikni qushish</h2>
+<form method="post" class="text-center" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-info">yangilik qushish</button>
+    </form>
+{% endblock content %}

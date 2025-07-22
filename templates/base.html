@@ -1,10 +1,12 @@
 {% load static %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 <html class="no-js" lang="zxx">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>News HTML-5 Template </title>
+        <title>{% block title %}{% endblock title %}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -91,25 +93,59 @@
                                         <a href="index.html"><img src="{% static 'image/logo/logo.png' %}" alt=""></a>
                                     </div>
                                 <!-- Main-menu -->
-                                <div class="main-menu d-none d-md-block">
+
+                                <div class="main-menu d-none d-md-block 1">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="{% url 'home_page' %}">Home</a></li>
-                                            <li><a href="{% url 'category_page' %}">Category</a></li>
-                                            <li><a href="{% url 'about' %}">About</a></li>
-                                            <li><a href="{% url 'latest_news' %}">Latest News</a></li>
-                                            <li><a href="{% url 'contact_page' %}">Contact</a></li>
-                                            <li><a href="{% url 'blog' %}">Blog</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
+                                            <li><a href="{% url 'home_page' %}">barcha yangiliklar</a></li>
+                                            <li><a href="{% url 'contact_page' %}">adminga hat</a></li>
+                                            <li><a href="{% url 'category_page' %}">bulimlar</a></li>
+
+                                            <li class="more-menu">
+                                                    <a href="#">kun uz bulimlari <i class="fas fa-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="{% url 'uzbekistan_page' %}">O‘zbekiston</a></li>
+                                                    <li><a href="{% url 'jahon_page' %}">Jahon</a></li>
+                                                    <li><a href="{% url 'iqtisodiyot_page' %}">Iqtisodiyot</a></li>
+                                                    <li><a href="{% url 'jamiyat_page' %}">Jamiyat</a></li>
+                                                    <li><a href="{% url 'sport_page' %}">Sport</a></li>
+                                                    <li><a href="{% url 'fan_texnika_page' %}">Fan-texnika</a></li>
+                                                    <li><a href="{% url 'moliya_page' %}">Moliya</a></li>
+                                                    <li><a href="{% url 'audio_page' %}">Audio</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="more-menu2">
+                                                    <a href="#">kun uz bulimlari <i class="fas fa-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="{% url 'talim_page' %}">Ta'lim</a></li>
+                                                    <li><a href="{% url 'avto_page' %}">Avto</a></li>
+                                                    <li><a href="{% url 'kochmas_mulk_page' %}">Ko‘chmas mulk</a></li>
+                                                    <li><a href="{% url 'soglom_hayot_page' %}">Sog'lom hayot</a></li>
+                                                    <li><a href="{% url 'ayollar_dunyosi_page' %}">Ayollar dunyosi</a></li>
+                                                    <li><a href="{% url 'turizm_page' %}">Turizm</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="more-menu2">
+                                                    <a href="#">kun uz bulimlari <i class="fas fa-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="{% url 'isroil_eron_page' %}">Isroil–Eron urushi</a></li>
+                                                    <li><a href="{% url 'ukraina_tinchlik_page' %}">Ukrainada tinchlik muzokaralari</a></li>
+                                                    <li><a href="{% url 'tramp_savdo_page' %}">Trampning savdo urushi</a></li>
+                                                    <li><a href="{% url 'rossiya_ukraina_page' %}">Rossiya-Ukraina urushi</a></li>
+                                                    <li><a href="{% url 'biznes_page' %}">biznes</a> </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-4">
                                 <div class="header-right-btn f-right d-none d-lg-block">
                                     <i class="fas fa-search special-tag"></i>
                                     <div class="search-box">
                                         <form action="#">
-                                            <input type="text" placeholder="Search">
+                                            <input type="text" placeholder="qidirish">
 
                                         </form>
                                     </div>
@@ -155,6 +191,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-xl-3 col-lg-3 col-md-4  col-sm-6">
                         <div class="single-footer-caption mt-60">
                             <div class="footer-tittle">

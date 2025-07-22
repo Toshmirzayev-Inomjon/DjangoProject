@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Update page{% endblock title %}
+{% block content %}
+
+<h2 class="text-center">Yangilikni tahrirlash</h2>
+<form method="post" class="text-center" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-info">Tahrirlash</button>
+    </form>
+{% endblock content %}

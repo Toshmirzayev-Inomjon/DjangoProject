@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Mahalliy yangiliklar {% endblock title %}
+{% block content %}
+<div class="O'zbekiston">
+    {% for news in uzbekistan %}
+        {% if forloop.counter0|divisibleby:2 %}
+        <div class="row mb-4">
+        {% endif %}
+
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="{{ news.image.url }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ news.title }}</h5>
+                    </div>
+                </div>
+            </div>
+
+        {% if forloop.counter0|add:1|divisibleby:2 or forloop.last %}
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+
+{% endblock content %}
