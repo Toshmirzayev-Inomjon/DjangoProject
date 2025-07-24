@@ -30,3 +30,11 @@ from django.contrib.auth import authenticate,login,logout
 def logged_out(request):
     logout(request)
     return render(request,'registration/logged_out.html')
+
+def dashboard_views(request):
+    user = request.user
+    context = {
+        'user':user
+    }
+
+    return render(request,'dashboard.html',context)

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title  %}Foydalanuchi sahifasi{% endblock title %}
+{% block content%}
+    <h2>siz haqingizda malumotlar</h2>
+    <p>{{ user.username }}</p><br>
+        <p>{{ user.email }}</p><br>
+    <p>{{ user.first_name }}</p><br>
+    <p>{{ user.last_name }}</p><br>
+    <p>Chiqish uchun</p>
+    <a class="btn black-color btn-dark"  href="{% url 'logged_out' %}">Chiqish</a>
+{% endblock content %}
